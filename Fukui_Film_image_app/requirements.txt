@@ -46,3 +46,10 @@ typing_extensions==4.13.2
 tzdata==2025.2
 uritemplate==4.1.1
 urllib3==2.4.0
+streamlit
+google-auth
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+Pillow
+pandas
