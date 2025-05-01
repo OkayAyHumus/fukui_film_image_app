@@ -2,7 +2,9 @@ streamlit==1.45.0
 pandas
 Pillow
 
-google-auth
-google-api-python-client
-google-auth-httplib2
-google-auth-oauthlib
+# Google API 関連（強制的に含める）
+google-auth==2.29.0
+google-auth-oauthlib==1.2.0
+google-auth-httplib2==0.2.0
+google-api-python-client==2.126.0
+httplib2==0.22.0
