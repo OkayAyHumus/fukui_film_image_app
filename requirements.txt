@@ -1,0 +1,8 @@
+streamlit==1.45.0
+pandas
+Pillow
+google-auth==2.29.0
+google-auth-oauthlib==1.2.0
+google-auth-httplib2==0.2.0
+google-api-python-client==2.126.0
+httplib2==0.22.0
