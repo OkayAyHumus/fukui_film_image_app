@@ -11,6 +11,7 @@ google-api-core==2.24.2
 google-api-python-client==2.169.0
 google-auth==2.39.0
 google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.0
 googleapis-common-protos==1.70.0
 httplib2==0.22.0
 idna==3.10
@@ -22,7 +23,7 @@ narwhals==1.37.1
 numpy==2.2.5
 packaging==24.2
 pandas==2.2.3
-pillow==11.2.1
+Pillow==11.2.1
 proto-plus==1.26.1
 protobuf==6.30.2
 pyarrow==20.0.0
@@ -46,10 +47,3 @@ typing_extensions==4.13.2
 tzdata==2025.2
 uritemplate==4.1.1
 urllib3==2.4.0
-streamlit
-google-auth
-google-api-python-client
-google-auth-httplib2
-google-auth-oauthlib
-Pillow
-pandas
