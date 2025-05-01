@@ -214,7 +214,7 @@ def main():
         margin-bottom: 20px;
     }
     </style>
-    <div class='main-title'>📷 福井県フィルムコミッション｜画像圧縮・ユーザー管理</div>
+    <div class='main-title'>📷 福井県フィルムコミッション｜画像圧縮</div>
     """, unsafe_allow_html=True)
 
     cwd = os.path.dirname(__file__)
