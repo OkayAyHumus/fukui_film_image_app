@@ -92,9 +92,6 @@ def login(service, users_df):
             st.sidebar.error("ユーザー名またはパスワードが違います")
             st.session_state.login_submitted = False
 
-    if "username" not in st.session_state:
-        st.stop()
-
 # ========================
 # 画像処理
 # ========================
@@ -228,6 +225,17 @@ def main():
 
     login(service, users_df)
 
+    if "username" in st.session_state:
+        with st.sidebar.form("compression_form"):
+            st.markdown("### ⚙️ 画像圧縮設定")
+            max_kb = st.number_input("最大ファイルサイズ（KB）", min_value=50, max_value=2048, value=500, key="max_kb_input")
+            use_enhancement = st.checkbox("画像を自動補正（明度・彩度・コントラスト）", value=True)
+            submit_btn = st.form_submit_button("📤 圧縮してアップロード")
+    else:
+        max_kb = None
+        use_enhancement = None
+        submit_btn = False
+
     user_folder_id = st.session_state["folder_id"]
     file_list = list_image_files_in_folder(service, user_folder_id)
     if not file_list:
@@ -236,15 +244,9 @@ def main():
 
     selected = display_images_with_checkboxes(cwd, service, file_list)
 
-    with st.form("compression_form"):
-        max_kb = st.number_input("📐 最大ファイルサイズ（KB）", min_value=50, max_value=2048, value=500, key="max_kb_input")
-        use_enhancement = st.checkbox("画像を自動補正（明度・彩度・コントラスト）", value=True)
-        submit_btn = st.form_submit_button("📤 圧縮してアップロード")
-
-    if submit_btn and selected:
+    if submit_btn and selected and max_kb:
         max_bytes = max_kb * 1024
-        parent_folder_id = st.session_state["folder_id"]
-        new_folder_id, _ = create_timestamped_folder(service, parent_folder_id=parent_folder_id)
+        new_folder_id, _ = create_timestamped_folder(service, parent_folder_id=user_folder_id)
         compress_and_upload_images(service, cwd, selected, max_bytes, new_folder_id, use_enhancement)
         st.rerun()
 
