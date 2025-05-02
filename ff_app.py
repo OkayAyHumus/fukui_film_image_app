@@ -225,6 +225,10 @@ def main():
 
     login(service, users_df)
 
+      # 未ログインなら以降の処理を止める
+    if "username" not in st.session_state:
+        st.stop()
+
     if "username" in st.session_state:
         with st.sidebar.form("compression_form"):
             st.markdown("### ⚙️ 画像圧縮設定")
